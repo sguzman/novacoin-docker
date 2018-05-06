@@ -11,3 +11,6 @@ RUN make
 WORKDIR src
 RUN make -f makefile.unix USE_O3=1 USE_ASM=1 USE_LEVELDB=1 RELEASE=1 STATIC=1
 RUN strip novacoind
+RUN cp novacoind /root/novacoind
+WORKDIR ~
+RUN ~/novacoind -server -printtoconsole -logtimestamps -updgradewallet -par=8
